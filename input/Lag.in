@@ -1,0 +1,13 @@
+IniPos 1.0
+
+IniVel 2.0
+IniTemp 3.0
+
+DampCoef 4.0
+dt 5.0
+
+ttot 10.0
+
+
+
+#EOF
