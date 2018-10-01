@@ -19,7 +19,7 @@ def LagIO_read(filename):
       elif lp[0] == "dt":
         dt = float(lp[1])
       elif lp[0] == "ttot":
-        ttot = float(lp[1]);
+        ttot = int(lp[1]);
   os.chdir("../Lagevin")  
 #  print(IniPos)
 #  print(IniVel)
