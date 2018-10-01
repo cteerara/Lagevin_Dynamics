@@ -1,7 +1,7 @@
-IniPos 1.0
+IniPos 0.01
 
-IniVel 2.0
-IniTemp 3.0
+IniVel 0.01
+IniTemp 100.0
 
 DampCoef 1e-2
 dt 1e-2
