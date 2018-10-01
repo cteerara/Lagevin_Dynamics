@@ -1,7 +1,7 @@
 import LagInput 
 import os
 
-def LagIO_read(filename):
+def LagIO_readInput(filename):
   os.chdir("../input") 
   fid = open("Lag.in","r")
   for line in fid.readlines():

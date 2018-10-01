@@ -2,7 +2,7 @@ import LagInput
 import LagIO
 
 
-def Lag_RK4(RHS, lagin, F0):
+def RK4(RHS, lagin, F0):
   k1 = RHS(F0)
   F1 = F0 + k1*lagin.dt/2.0
   
