@@ -1,12 +1,12 @@
-IniPos 0.01
+IniPos 0
 
-IniVel 0.01
-IniTemp 100.0
+IniVel 0
+IniTemp 300.0
 
-DampCoef 1e-2
-dt 1e-2
+DampCoef 0.1
+dt 0.1
 
-ttot 1000
+ttot 10000
 
 
 
