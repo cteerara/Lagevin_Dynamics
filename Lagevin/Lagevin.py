@@ -5,7 +5,8 @@ import random
 import LagIntegrator as LInt
 import numpy as np
 import matplotlib.pyplot as plt
-lagin = LagIO.LagIO_readInput("Lag.in")
+import os
+lagin = LagIO.readInput("Lag.in")
 
 # Defining velocity function
 def vel_RHS(v,t):
@@ -39,6 +40,13 @@ NumOfRun = 100
 TimeHitWall = [0] * NumOfRun
 tvec = np.linspace(0,lagin.ttot*lagin.dt,num=lagin.ttot)
 
+if not os.path.isdir("../output"):
+  os.mkdir("../output")
+
+os.chdir("../output")
+fid = open("LagOut.out","w")
+fid.write("runID\ttime\tposition\tvelocity\n\n")
+
 for j in range(0,NumOfRun):
   for i in range(1,lagin.ttot):
     t = lagin.dt*i
@@ -50,8 +58,11 @@ for j in range(0,NumOfRun):
       break
     Vin = V[i]
     X[i] = LInt.RK4(pos_RHS, lagin, (X[i-1],Vin,t))
-  
+    # Write output
+    LagIO.writeOutput(fid, j+1, t, X[i], V[i])
 
+  fid.write("#### Run number %d complete ####\n\n"%(j+1))
+  # Plot tajectory
   plt.figure(200)
   plt.plot(tvec[0:i-1],X[0:i-1])
   
@@ -59,28 +70,27 @@ for j in range(0,NumOfRun):
   plt.plot(tvec[0:i-1],V[0:i-1])
 
 
-
+os.chdir("../output")
+# Position plot
 plt.figure(200)
 plt.title('Position')
 plt.xlabel('Time')
 plt.ylabel('Position')
+plt.savefig('Pos.png')
 
+# Velocity plot
 plt.figure(300)
 plt.title('Velocity')
 plt.xlabel('Time')
 plt.ylabel('Velocity')
+plt.savefig('Vel.png')
 
+# Plot Histogram
 n_bins = 20
 plt.figure(100)
 plt.title('Time until particle hit the wall')
 plt.hist(TimeHitWall, bins=n_bins)
+plt.savefig('Histogram.png')
 
+os.chdir("../Lagevin")
 
-plt.show()
-
-#plt.figure(300)
-#plt.title("Velocity")
-#plt.show() 
-#plt.figure(200)
-#plt.title("Position")
-#plt.show()
