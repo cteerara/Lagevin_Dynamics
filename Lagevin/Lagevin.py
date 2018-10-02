@@ -6,8 +6,24 @@ import LagIntegrator as LInt
 import numpy as np
 import matplotlib.pyplot as plt
 import os
+import argparse
+
+#-------------------------------------------
+# Create and define input
+parser = argparse.ArgumentParser()
+parser.add_argument('--temperature', help='Input temperature of type double')
+parser.add_argument('--total_time', help='Input total time of type double')
+parser.add_argument('--time_step',help='Input time step size of type double')
+parser.add_argument('--initial_position', help='Input initial position of type double')
+parser.add_argument('--initial_velocity', help='Input initial velocity of type double')
+parser.add_argument('--damping_coefficient', help='Input damping coefficient of type double')
+args = parser.parse_args()
+LagIO.writeInput(args)
+
+
 lagin = LagIO.readInput("Lag.in")
 
+#---------------------------------------------
 # Defining velocity function
 def vel_RHS(v,t):
   # INPUT: LagInput lagin 
@@ -40,6 +56,9 @@ NumOfRun = 100
 TimeHitWall = [0] * NumOfRun
 tvec = np.linspace(0,lagin.ttot*lagin.dt,num=lagin.ttot)
 
+HighestTimeStep = 0
+Tajectory = [0]*lagin.ttot
+
 if not os.path.isdir("../output"):
   os.mkdir("../output")
 
@@ -60,30 +79,27 @@ for j in range(0,NumOfRun):
     X[i] = LInt.RK4(pos_RHS, lagin, (X[i-1],Vin,t))
     # Write output
     LagIO.writeOutput(fid, j+1, t, X[i], V[i])
-
-  fid.write("#### Run number %d complete ####\n\n"%(j+1))
-  # Plot tajectory
-  plt.figure(200)
-  plt.plot(tvec[0:i-1],X[0:i-1])
   
-  plt.figure(300)
-  plt.plot(tvec[0:i-1],V[0:i-1])
+  # Write partition between runID
+  fid.write("#### Run number %d complete ####\n\n"%(j+1))
 
+  # Save positions with longest staytime.
+  if i>HighestTimeStep:
+    HighestTimeStep = i
+    for k in range(0,i):
+      Tajectory[k] = X[k]
 
+#  plt.figure(400)
+#  plt.plot(tvec[0:i-1],X[0:i-1])
+#----------------------------------------------------
+# Save plots
 os.chdir("../output")
-# Position plot
-plt.figure(200)
-plt.title('Position')
-plt.xlabel('Time')
-plt.ylabel('Position')
-plt.savefig('Pos.png')
 
-# Velocity plot
-plt.figure(300)
-plt.title('Velocity')
-plt.xlabel('Time')
-plt.ylabel('Velocity')
-plt.savefig('Vel.png')
+# Plot Tajectory
+plt.figure(200)
+plt.plot(tvec[0:HighestTimeStep-1],Tajectory[0:HighestTimeStep-1])
+plt.title("Tajectory")
+plt.savefig("Tajectory.png")
 
 # Plot Histogram
 n_bins = 20
@@ -91,6 +107,6 @@ plt.figure(100)
 plt.title('Time until particle hit the wall')
 plt.hist(TimeHitWall, bins=n_bins)
 plt.savefig('Histogram.png')
-
+#plt.show()
 os.chdir("../Lagevin")
 

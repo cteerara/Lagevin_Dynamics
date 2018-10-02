@@ -8,18 +8,21 @@ def readInput(filename):
     # Line Parsed
     lp = line.split();
     if not not lp: # Handle empty strings. Python is weird...
-      if lp[0] == "IniPos":
+      if lp[0] == "initial_position":
         IniPos = float(lp[1])
-      elif lp[0] == "IniVel":
+      elif lp[0] == "initial_velocity":
         IniVel = float(lp[1])
-      elif lp[0] == "IniTemp":
+      elif lp[0] == "temperature":
         IniTemp = float(lp[1])
-      elif lp[0] == "DampCoef":
+      elif lp[0] == "damping_coefficient":
         DampCoef = float(lp[1]);
-      elif lp[0] == "dt":
+      elif lp[0] == "time_step":
         dt = float(lp[1])
-      elif lp[0] == "ttot":
-        ttot = int(lp[1]);
+      elif lp[0] == "total_time":
+        ttot = float(lp[1]);
+
+  #ttot is actually total time step which is equal to total_time/dt
+  ttot = int(ttot/dt)
   os.chdir("../Lagevin")  
 #  print(IniPos)
 #  print(IniVel)
@@ -36,4 +39,14 @@ def writeOutput(fid, runID, time, pos, vel):
 
   os.chdir("../output")
   fid.write("%d\t%f\t%f\t%f\n" %(runID, time, pos, vel))
+  os.chdir("../Lagevin")
+
+def writeInput(args):
+  if not os.path.isdir("../input"):
+    os.mkdir("../input")
+  os.chdir("../input")
+  fidin = open("Lag.in","w")
+  for arg in vars(args):
+    line = arg, getattr(args, arg)
+    fidin.write("%s %s\n"%(arg, getattr(args,arg)))
   os.chdir("../Lagevin")
