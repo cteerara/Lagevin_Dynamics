@@ -99,14 +99,14 @@ def Main():
   os.chdir("../output")
 	
 	# Plot Tajectory
-  plt.figure(200)
+  plt.figure()
   plt.plot(tvec[0:HighestTimeStep-1],Tajectory[0:HighestTimeStep-1])
   plt.title("Tajectory")
   plt.savefig("Tajectory.png")
 	
 	# Plot Histogram
   n_bins = 20
-  plt.figure(100)
+  plt.figure()
   plt.title('Time until particle hit the wall')
   plt.hist(TimeHitWall, bins=n_bins)
   plt.savefig('Histogram.png')
@@ -116,4 +116,3 @@ def Main():
 if __name__ == '__main__':
   Main()
 
-#Main()
