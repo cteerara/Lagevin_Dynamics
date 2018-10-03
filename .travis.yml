@@ -23,8 +23,9 @@ pip install scipy
 sudo apt-get install -qq python-numpy python-scipy python-matplotlib
 
 script:
-coverage run --source=Lagevin setup.py test
-coverage report -m
+#coverage run --source=Lagevin setup.py test
+#coverage report -m
+python Lagevin/Lavegin.py
 
 after_success: coveralls
 language: python
