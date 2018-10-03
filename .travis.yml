@@ -17,10 +17,11 @@ python setup.py install
 #script: tox
 
 before install:
+sudo apt-get install -qq python-numpy python-scipy python-matplotlib
 pip install matplotlib
 pip install coverage
 pip install scipy
-sudo apt-get install -qq python-numpy python-scipy python-matplotlib
+pip install argparse
 
 script:
 #coverage run --source=Lagevin setup.py test
