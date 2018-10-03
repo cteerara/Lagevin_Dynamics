@@ -43,7 +43,10 @@ def test_command_line_interface():
     assert help_result.exit_code == 0
     assert '--help  Show this message and exit.' in help_result.output
 
-def test_LagIO_readInput():
+#-------------------------------------------
+# test LagIO
+def test_LagIO_readInput_ValidInput():
+    # Check case for Valid input
     os.chdir("input")
     result=LagIO.readInput('test_Lag.in')
     assert result.IniPos == 0.0
@@ -53,8 +56,23 @@ def test_LagIO_readInput():
     assert result.dt == 0.1
     assert result.ttot == 10000
 
+def test_LagIO_readInput_InvalidInput():
+    # Check case for Invalid input
+    #os.chdir("input")
+    result=LagIO.readInput('test_Lag_None.in')
+    assert result.IniPos == 0.0
+    assert result.IniVel == 0.0
+    assert result.IniTemp == 0.0
+    assert result.DampCoef == 0.0
+    assert result.dt == 1
+    assert result.ttot == 10
+
+#def test_LagIO_writeInput():
+    
+#---------------------------------------
+# test integrator
 def test_LagIntegrator_RK4():
-      lagin = LagIO.readInput("Lag.in")
+      lagin = LagIO.readInput("test_Lag.in")
       def RHS(y,t):
         return y
       F0 = 1.0
@@ -68,6 +86,28 @@ def test_LagIntegrator_RK4():
         F = LInt.RK4(RHS, lagin, (F,t))
       assert np.abs(F-np.exp(1)) < 1e-2  
 
-#def test_Lagevin_vel_RHS():
-#  result = Lagevin.vel_RHS(1,2)
-  
+#------------------------------------
+# Test Lagevin.py
+def test_Lagevin_getInput():
+  result = Lagevin.getInput() 
+  assert result.IniPos == 0.0
+  assert result.IniVel == 0.0
+  assert result.IniTemp == 0.0
+  assert result.DampCoef == 0.0
+  assert result.dt == 1
+  assert result.ttot == 10
+
+
+def test_Lagevin_vel_RHS():
+  # with random seed == 1, using the test_Lag.in input file, vel_RHS should give the result equal to 12.482... We only take up to the 3rd decimal place 
+  lagin = LagIO.readInput("test_Lag.in")
+  np.random.seed(1)
+  result = Lagevin.vel_RHS(1,lagin,2)
+  assert 12482 == int(result*1e3)
+
+def test_Lagevin_pos_RHS():
+  result = Lagevin.pos_RHS(1,2,1)
+  assert result == 2
+
+def test_Lagevin_Main():
+  Lagevin.Main()

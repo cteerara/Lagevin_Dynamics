@@ -42,11 +42,11 @@ def readInput(filename):
   laginput = LagInput.get_LagInput(IniPos, IniVel, IniTemp, DampCoef, dt, ttot)
   return laginput
 
-def writeInput(args):
+def writeInput(args,filename):
   if not os.path.isdir("../input"):
     os.mkdir("../input")
   os.chdir("../input")
-  fidin = open("Lag.in","w")
+  fidin = open(filename,"w")
   for arg in vars(args):
     line = arg, getattr(args, arg)
     fidin.write("%s %s\n"%(arg, getattr(args,arg)))

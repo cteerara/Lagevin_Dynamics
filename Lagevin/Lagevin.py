@@ -9,20 +9,20 @@ import argparse
 
 #-------------------------------------------
 def getInput():
-	# Create and define input
-	parser = argparse.ArgumentParser()
-	parser.add_argument('--temperature', help='Input temperature of type double')
-	parser.add_argument('--total_time', help='Input total time of type double')
-	parser.add_argument('--time_step',help='Input time step size of type double')
-	parser.add_argument('--initial_position', help='Input initial position of type double')
-	parser.add_argument('--initial_velocity', help='Input initial velocity of type double')
-	parser.add_argument('--damping_coefficient', help='Input damping coefficient of type double')
-	args = parser.parse_args()
-	LagIO.writeInput(args)
-	
-	
-	lagin = LagIO.readInput("Lag.in")
-	return lagin
+  # Create and define input
+  parser = argparse.ArgumentParser()
+  parser.add_argument('--temperature', help='Input temperature of type double')
+  parser.add_argument('--total_time', help='Input total time of type double')
+  parser.add_argument('--time_step',help='Input time step size of type double')
+  parser.add_argument('--initial_position', help='Input initial position of type double')
+  parser.add_argument('--initial_velocity', help='Input initial velocity of type double')
+  parser.add_argument('--damping_coefficient', help='Input damping coefficient of type double')
+
+  args = parser.parse_args()
+  filename = "Lag.in"	
+  LagIO.writeInput(args,filename)
+  lagin = LagIO.readInput(filename)
+  return lagin
 
 #---------------------------------------------
 # Defining velocity function
@@ -33,12 +33,12 @@ def vel_RHS(v,lagin,t):
   # OUTPUT: Double output
   # Function compute the Right-Hand-Side of the Lagevin velocity equation
   # \frac{dv(t)}{dt} = -\frac{\gamma}{m}v(t) + \frac{1}{m} \epsilon (t)
-  
   epsilon_var = 2*lagin.IniTemp*lagin.DampCoef
   epsilon_std = np.sqrt(epsilon_var)
   epsilon = np.random.normal(0,epsilon_std,1)
   RHS = -lagin.DampCoef*v + epsilon
   return RHS
+
  
 def pos_RHS(x0,v,t):
   # \frac{dx(t)}{dt} = v(t)
@@ -110,8 +110,10 @@ def Main():
   plt.title('Time until particle hit the wall')
   plt.hist(TimeHitWall, bins=n_bins)
   plt.savefig('Histogram.png')
-	#plt.show()
+#  plt.show()
   os.chdir("../Lagevin")
 
-if __name__ == '__Main__':
+if __name__ == '__main__':
   Main()
+
+#Main()
