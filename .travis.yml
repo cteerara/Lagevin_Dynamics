@@ -23,7 +23,7 @@ before_install:
 - sudo apt-get install -qq python-numpy python-scipy python-matplotlib
 
 script: 
-- coverage run  setup.py test
+- coverage run --source=Lagevin setup.py test
 - coverage report -m
 after_success: coveralls
 language: python
