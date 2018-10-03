@@ -10,21 +10,21 @@ python:
 # Command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 #install: pip install -U tox-travis
 install:
-- pip install coveralls
-- python setup.py install
+pip install coveralls
+python setup.py install
 
 # Command to run tests, e.g. python setup.py test
 #script: tox
 
 before install:
-- pip install matplotlib
-- pip install coverage
-- pip install scipy
-- sudo apt-get install -qq python-numpy python-scipy python-matplotlib
+pip install matplotlib
+pip install coverage
+pip install scipy
+sudo apt-get install -qq python-numpy python-scipy python-matplotlib
 
 script:
-- coverage run --source=Lagevin setup.py test
-- coverage report -m
+coverage run --source=Lagevin setup.py test
+coverage report -m
 
 after_success: coveralls
 language: python
