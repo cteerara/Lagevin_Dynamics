@@ -3,10 +3,19 @@ import os
 
 def readInput(filename):
   os.chdir("../input") 
-  fid = open("Lag.in","r")
+  fid = open(filename,"r")
   for line in fid.readlines():
     # Line Parsed
     lp = line.split();
+    if lp[1] == 'None':
+      print("Invalid input. Using default values")
+      IniPos = 0.0
+      IniVel = 0.0
+      IniTemp = 0.0
+      DampCoef = 0.0
+      dt = 1
+      ttot = 10
+      break
     if not not lp: # Handle empty strings. Python is weird...
       if lp[0] == "initial_position":
         IniPos = float(lp[1])
@@ -32,14 +41,6 @@ def readInput(filename):
 #  print(ttot)
   laginput = LagInput.get_LagInput(IniPos, IniVel, IniTemp, DampCoef, dt, ttot)
   return laginput
-
-def writeOutput(fid, runID, time, pos, vel):
-  if not os.path.isdir("../output"): # Not output directory
-    os.mkdir("../output")
-
-  os.chdir("../output")
-  fid.write("%d\t%f\t%f\t%f\n" %(runID, time, pos, vel))
-  os.chdir("../Lagevin")
 
 def writeInput(args):
   if not os.path.isdir("../input"):
