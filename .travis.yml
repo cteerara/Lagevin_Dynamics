@@ -12,21 +12,22 @@ python:
 install:
 pip install coveralls
 python setup.py install
+pip install matplotlib
 
 # Command to run tests, e.g. python setup.py test
 #script: tox
 
 before install:
-sudo apt-get install -qq python-numpy python-scipy python-matplotlib
 pip install matplotlib
 pip install coverage
 pip install scipy
 pip install argparse
+sudo apt-get install -qq python-numpy python-scipy python-matplotlib
 
 script:
-#coverage run --source=Lagevin setup.py test
-#coverage report -m
-python Lagevin/Lavegin.py
+coverage run --source=Lagevin setup.py test
+coverage report -m
+#python Lagevin/Lavegin.py
 
 after_success: coveralls
 language: python
