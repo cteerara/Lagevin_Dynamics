@@ -31,14 +31,15 @@ Features
 --------
 
 Package simulate 1D Langevin dynamics for 1 particle with wall bound from 0 to 5. Package includes:
-* Lagevin.py: This is the main file 
-* LagIntegrator.py: This defines the time stepping integrator.
-* LagIO.py: This defines function that takes care of reading input and writing outputs
-* LagInput.py: This defines the input structure read from the input file.
+
+  - Lagevin.py: This is the main file 
+  - LagIntegrator.py: This defines the time stepping integrator.
+  - LagIO.py: This defines function that takes care of reading input and writing outputs
+  - LagInput.py: This defines the input structure read from the input file.
 
 How To Run
 --------
-To execute
+
 To run the package go to the src directory Lagevin/src then run the file.
 To run, do: 
   python Lagevin.py --temperature 300 --total_time 1000 --time_step 0.1 --initial_position 0.0 --initial_velocity 0.0 --damping_coefficient 0.1
