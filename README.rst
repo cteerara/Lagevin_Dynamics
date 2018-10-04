@@ -78,7 +78,7 @@ Functions
 
 *LagInput* lagin
 
-- **LagIntegrator.RK4(RHS, lagin, F): Perform the RK4 integrating scheme on the functio with \frac{dF}{dt} = RHS(F, t)
+- **LagIntegrator.RK4(RHS, lagin, F): Perform the RK4 integrating scheme on the functio with \frac{dF}{dt} = RHS(F, t)**
 
 **INPUT:** 
 
