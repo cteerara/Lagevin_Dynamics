@@ -42,55 +42,55 @@ Functions
 
 - LagInput.get_LagInput(IniPos, IniVel, IniTemp, DampCoef, dt, ttot): Generate LagInput type that contains input parameters
 
-**bold** INPUT: 
+**INPUT:** 
 
-double IniPos
+*double* IniPos
   
-double IniVel
+*double* IniVel
   
-double IniTemp  
+*double* IniTemp  
   
-double DampCoef
+*double* DampCoef
   
-double dt
+*double* dt
   
-integer ttot
+*integer* ttot
 
-OUTPUT: 
+**OUTPUT:** 
   
-LagInput lagin
+*LagInput* lagin
 
 - LagIO.writeInput(args, filename): Generate input file from console input
 
-INPUT: 
+**INPUT:** 
   
-string filename 
+*string* filename 
 
-tuple args # arguments from argparse module
+*tuple* args # arguments from argparse module
 
 - LagIO.readInput(filename): Read input files to generate the LagInput type
 
-INPUT: 
+**INPUT:** 
 
-string filename
+*string* filename
 
-OUTPUT: 
+**OUTPUT:** 
 
-LagInput lagin
+*LagInput* lagin
 
 - LagIntegrator.RK4(RHS, lagin, F): Perform the RK4 integrating scheme on the functio with \frac{dF}{dt} = RHS(F, t)
 
-INPUT: 
+**INPUT:** 
 
-Function RHS 
+*Function* RHS 
 
-LagInput lagin
+*LagInput* lagin
 
-tuple F # tuple F MUST have the initial condition as the first argument.
+*tuple* F # tuple F MUST have the initial condition as the first argument.
 
-OUTPUT 
+**OUTPUT:** 
 
-double Fn
+*double* Fn
 
 
 How To Run
