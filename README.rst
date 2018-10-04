@@ -40,14 +40,11 @@ Package simulate 1D Langevin dynamics for 1 particle with wall bound from 0 to 5
 Functions
 --------
 
-LagInput.get_LagInput(IniPos, IniVel, IniTemp, DampCoef, dt, ttot):
+- LagInput.get_LagInput(IniPos, IniVel, IniTemp, DampCoef, dt, ttot):
 
-   INPUT: double IniPos
-          double IniVel
-          double IniTemp
-          double DampCoef
-          double dt
-          integer ttot
+   INPUT: 
+double IniPos, double IniVel, double IniTemp, double DampCoef, double dt, integer ttot
+
    OUTPUT: LagInput lagin
 
 
