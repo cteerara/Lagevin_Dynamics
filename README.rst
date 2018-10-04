@@ -42,7 +42,7 @@ Functions
 
 - LagInput.get_LagInput(IniPos, IniVel, IniTemp, DampCoef, dt, ttot): Generate LagInput type that contains input parameters
 
-INPUT: 
+**bold** INPUT: 
 
 double IniPos
   
