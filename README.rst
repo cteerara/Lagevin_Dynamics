@@ -90,7 +90,7 @@ Functions
 
 **OUTPUT:** 
 
-*double* Fn
+*double* Fn # Output from single RK4 integration
 
 
 How To Run
