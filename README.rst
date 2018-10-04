@@ -42,8 +42,7 @@ Functions
 
 - LagInput.get_LagInput(IniPos, IniVel, IniTemp, DampCoef, dt, ttot):
 
-   INPUT: 
-double IniPos, double IniVel, double IniTemp, double DampCoef, double dt, integer ttot
+   INPUT: double IniPos, double IniVel, double IniTemp, double DampCoef, double dt, integer ttot
 
    OUTPUT: LagInput lagin
 
