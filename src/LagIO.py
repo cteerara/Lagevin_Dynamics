@@ -2,6 +2,9 @@ import LagInput
 import os
 
 def readInput(filename):
+  # INPUT:   string filename
+  # OUTPUT:  LagInput lagin
+  # This function reads from the input file and output the LagInput type lagin containing all the input values
   os.chdir("../input") 
   fid = open(filename,"r")
   for line in fid.readlines():

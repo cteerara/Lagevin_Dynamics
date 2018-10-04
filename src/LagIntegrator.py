@@ -8,7 +8,8 @@ def RK4(RHS, lagin, F):
   #         tuple F
   # Takes the Right-Hand_side of an equation \frac{dx}{dt} = RHS(x,t) which the function will integrate. 
   # Step size is defined in lagin under dt.
-  # F is the input to the RHS function. Note that the first argument of RHS MUST always be the initial condition of the function you want to integrate.
+  # F is the input to the RHS function. 
+  # The first argument of RHS MUST always be the initial condition of the function you want to integrate.
   F0 = F[0]
   F_list = list(F)
 

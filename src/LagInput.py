@@ -12,9 +12,15 @@ class LagInput(object):
     self.IniTemp = IniTemp
     self.DampCoef = DampCoef
     self.dt = dt
-    self.ttot = ttot
+    self.ttot = ttot # Total timesteps
 
 def get_LagInput(IniPos, IniVel, IniTemp, DampCoef, dt, ttot):
+  #INPUT: double IniPos
+  #       double IniVel
+  #       double IniTemp
+  #       double DampCoef
+  #       double dt
+  #       integer ttot
   laginput = LagInput(IniPos, IniVel, IniTemp, DampCoef, dt, ttot)
   return laginput
   

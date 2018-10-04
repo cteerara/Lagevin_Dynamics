@@ -33,6 +33,7 @@ Features
 Package simulate 1D Langevin dynamics for 1 particle with wall bound from 0 to 5. Package includes:
 
 - Lagevin.py: This is the main file 
+  Haii
 - LagIntegrator.py: This defines the time stepping integrator.
 - LagIO.py: This defines function that takes care of reading input and writing outputs
 - LagInput.py: This defines the input structure read from the input file.
@@ -41,13 +42,22 @@ How To Run
 --------
 
 To run the package go to the src directory Lagevin/src then run the file then do:
-  - /Lagevin/src$ python Lagevin.py --temperature 300 --total_time 1000 --time_step 0.1 --initial_position 0.0 --initial_velocity 0.0 --damping_coefficient 0.1
+  - $ python Lagevin.py --temperature 300 --total_time 1000 --time_step 0.1 --initial_position 0.0 --initial_velocity 0.0 --damping_coefficient 0.1
 where for example --temperature 300 means the input temperature is 300 for the simulation. This applies to all the parameters listed above.
 
 To run coverage, go to the Lagevin directory Lagevin/ then do:
-  - /Lagevin$ coverage run --source=src setup.py test
-  - /Lagevin$ coverage report -m
+  - $ coverage run --source=src setup.py test
+  - $ coverage report -m
   
+Input and Output
+--------
+
+Directories Lagevin/input and Lagevin/output are created. 
+
+Lagevin/input contains a text file named Lag.in that has the input from the --input that was used to run.
+
+Lagevin/output contains the output image under Histogram.png and Tajectory.png, and the output containing timesteps and position and velocities under LagOut.out
+
 Credits
 -------
 

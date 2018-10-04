@@ -27,12 +27,13 @@ def getInput():
 #---------------------------------------------
 # Defining velocity function
 def vel_RHS(v,lagin,t):
-  # INPUT: LagInput lagin 
-  #        Double rand
-  #        Double v
+  # INPUT: double v
+  #        LagInput lagin 
+  #        Double t
   # OUTPUT: Double output
   # Function compute the Right-Hand-Side of the Lagevin velocity equation
   # \frac{dv(t)}{dt} = -\frac{\gamma}{m}v(t) + \frac{1}{m} \epsilon (t)
+  # Where v is the initial velocity. lagin is the derived type variable containing all the inputs, and t is time
   epsilon_var = 2*lagin.IniTemp*lagin.DampCoef
   epsilon_std = np.sqrt(epsilon_var)
   epsilon = np.random.normal(0,epsilon_std,1)
@@ -41,12 +42,20 @@ def vel_RHS(v,lagin,t):
 
  
 def pos_RHS(x0,v,t):
+  # INPUT: double x0
+  #        double v
+  #        double t
+  # Function compute the Right-Hand_Side of the position equation
   # \frac{dx(t)}{dt} = v(t)
+  # Where x0 is the initial position, v is the velocity, and t is time
   return v
 
 
 #------------------------------------------------------
 def Main():
+  #INPUT:   
+  #OUTPUT:  integer PlotBlowUP
+  # This is the main loop containing the integration and figure saving steps. It only output PlotBlowUp which is 1 when the velocity or the position goes to infinity and integration fails.
   PlotBlowUp=0
   lagin = getInput()
   WallBound = 5
@@ -84,7 +93,7 @@ def Main():
 
       if np.isinf(V[i]) or np.isinf(X[i]):
         PlotBlowUp=1
-
+        break
 	    # Write output
       fid.write("%d\t%f\t%f\t%f\n"%(j+1,t,X[i],V[i]))
 	  
