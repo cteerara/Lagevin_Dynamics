@@ -40,7 +40,7 @@ Package simulate 1D Langevin dynamics for 1 particle with wall bound from 0 to 5
 Functions
 --------
 
-- LagInput.get_LagInput(IniPos, IniVel, IniTemp, DampCoef, dt, ttot): Generate LagInput type that contains input parameters
+- **LagInput.get_LagInput(IniPos, IniVel, IniTemp, DampCoef, dt, ttot): Generate LagInput type that contains input parameters**
 
 **INPUT:** 
 
@@ -60,7 +60,7 @@ Functions
   
 *LagInput* lagin
 
-- LagIO.writeInput(args, filename): Generate input file from console input
+- **LagIO.writeInput(args, filename): Generate input file from console input**
 
 **INPUT:** 
   
@@ -68,7 +68,7 @@ Functions
 
 *tuple* args # arguments from argparse module
 
-- LagIO.readInput(filename): Read input files to generate the LagInput type
+- **LagIO.readInput(filename): Read input files to generate the LagInput type**
 
 **INPUT:** 
 
@@ -78,7 +78,7 @@ Functions
 
 *LagInput* lagin
 
-- LagIntegrator.RK4(RHS, lagin, F): Perform the RK4 integrating scheme on the functio with \frac{dF}{dt} = RHS(F, t)
+- **LagIntegrator.RK4(RHS, lagin, F): Perform the RK4 integrating scheme on the functio with \frac{dF}{dt} = RHS(F, t)
 
 **INPUT:** 
 
