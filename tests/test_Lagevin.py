@@ -11,11 +11,11 @@ import numpy as np
 sys.path.append("../")
 from click.testing import CliRunner
 
-from Lagevin import Lagevin
-from Lagevin import cli
-from Lagevin import LagIO
-from Lagevin import LagIntegrator as LInt
-from Lagevin import LagInput
+from src import Lagevin
+from src import cli
+from src import LagIO
+from src import LagIntegrator as LInt
+from src import LagInput
 
 @pytest.fixture
 def response():

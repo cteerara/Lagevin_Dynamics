@@ -32,7 +32,7 @@ def readInput(filename):
 
   #ttot is actually total time step which is equal to total_time/dt
   ttot = int(ttot/dt)
-  os.chdir("../Lagevin")  
+  os.chdir("../src")  
 #  print(IniPos)
 #  print(IniVel)
 #  print(IniTemp)
@@ -50,4 +50,4 @@ def writeInput(args,filename):
   for arg in vars(args):
     line = arg, getattr(args, arg)
     fidin.write("%s %s\n"%(arg, getattr(args,arg)))
-  os.chdir("../Lagevin")
+  os.chdir("../src")

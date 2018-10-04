@@ -30,7 +30,7 @@ Simulate Lagevin Dynamics
 Features
 --------
 
-* TODO
+
 
 Credits
 -------

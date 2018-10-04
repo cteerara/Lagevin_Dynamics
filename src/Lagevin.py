@@ -118,7 +118,7 @@ def Main():
   plt.savefig('Histogram.png')
   #plt.close() 
   #plt.show()
-  os.chdir("../Lagevin")
+  os.chdir("../src")
   
   return PlotBlowUp
 if __name__ == '__main__':
