@@ -86,7 +86,7 @@ Functions
 
 *LagInput* lagin
 
-*tuple* F # tuple F MUST have the initial condition as the first argument.
+*tuple* F # tuple F contains inputs for the RHS function. It **MUST** have the initial condition as the first argument.
 
 **OUTPUT:** 
 
