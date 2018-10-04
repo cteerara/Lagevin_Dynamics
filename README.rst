@@ -35,7 +35,27 @@ Package simulate 1D Langevin dynamics for 1 particle with wall bound from 0 to 5
 - Lagevin.py: This is the main file 
 - LagIntegrator.py: This defines the time steping integrator.
 - LagIO.py: This defines function that takes care of reading input and writing outputs
-- LagInput.py: This defines the input structure read from the input file.
+- LagInput.py: This defines the LagInput type data read from the input file.
+
+Functions
+--------
+
+LagInput.get_LagInput(IniPos, IniVel, IniTemp, DampCoef, dt, ttot):
+
+   INPUT: double IniPos
+
+          double IniVel
+
+          double IniTemp
+
+          double DampCoef
+
+          double dt
+
+          integer ttot
+
+   OUTPUT: LagInput lagin
+
 
 How To Run
 --------
