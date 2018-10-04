@@ -107,11 +107,11 @@ To run coverage, go to the Lagevin directory Lagevin/ then do:
 Input and Output
 --------
 
-Directories Lagevin/input and Lagevin/output are created. 
+Directories */Lagevin/input* and */Lagevin/output* are created. 
 
-Lagevin/input contains a text file named Lag.in that has the input from the --input that was used to run.
+*/Lagevin/input* contains a text file named Lag.in that has the input from the --input that was used to run.
 
-Lagevin/output contains the output image under Histogram.png and Tajectory.png, and the output containing timesteps and position and velocities under LagOut.out
+*/Lagevin/output* contains the output image under Histogram.png and Tajectory.png, and the output containing timesteps and position and velocities under LagOut.out
 
 Credits
 -------
