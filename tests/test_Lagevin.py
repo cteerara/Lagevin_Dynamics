@@ -110,4 +110,5 @@ def test_Lagevin_pos_RHS():
   assert result == 2
 
 def test_Lagevin_Main():
-  Lagevin.Main()
+  result = Lagevin.Main()
+  assert result == 0

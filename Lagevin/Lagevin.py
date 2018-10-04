@@ -47,6 +47,7 @@ def pos_RHS(x0,v,t):
 
 #------------------------------------------------------
 def Main():
+  PlotBlowUp=0
   lagin = getInput()
   WallBound = 5
   # Main Loop
@@ -80,6 +81,10 @@ def Main():
         break
       Vin = V[i]
       X[i] = LInt.RK4(pos_RHS, lagin, (X[i-1],Vin,t))
+
+      if np.isinf(V[i]) or np.isinf(X[i]):
+        PlotBlowUp=1
+
 	    # Write output
       fid.write("%d\t%f\t%f\t%f\n"%(j+1,t,X[i],V[i]))
 	  
@@ -98,21 +103,24 @@ def Main():
 	# Save plots
   os.chdir("../output")
 	
-#	# Plot Tajectory
-#  plt.figure()
-#  plt.plot(tvec[0:HighestTimeStep-1],Tajectory[0:HighestTimeStep-1])
-#  plt.title("Tajectory")
-#  plt.savefig("Tajectory.png")
-#	
-#	# Plot Histogram
-#  n_bins = 20
-#  plt.figure()
-#  plt.title('Time until particle hit the wall')
-#  plt.hist(TimeHitWall, bins=n_bins)
-#  plt.savefig('Histogram.png')
-##  plt.show()
-#  os.chdir("../Lagevin")
+	# Plot Tajectory
+  #plt.figure()
+  plt.plot(tvec[0:HighestTimeStep-1],Tajectory[0:HighestTimeStep-1])
+  plt.title("Tajectory")
+  plt.savefig("Tajectory.png")
+  plt.close()
 
+	# Plot Histogram
+  n_bins = 20
+  #plt.figure()
+  plt.title('Time until particle hit the wall')
+  plt.hist(TimeHitWall, bins=n_bins)
+  plt.savefig('Histogram.png')
+  #plt.close() 
+  #plt.show()
+  os.chdir("../Lagevin")
+  
+  return PlotBlowUp
 if __name__ == '__main__':
   Main()
 
