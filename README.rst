@@ -42,13 +42,29 @@ Functions
 
 - LagInput.get_LagInput(IniPos, IniVel, IniTemp, DampCoef, dt, ttot): Generate LagInput type that contains input parameters
 
- INPUT: double IniPos, double IniVel, double IniTemp, double DampCoef, double dt, integer ttot
+ INPUT: 
 
- OUTPUT: LagInput lagin
+ double IniPos
+  
+ double IniVel
+  
+ double IniTemp  
+  
+ double DampCoef
+  
+ double dt
+  
+ integer ttot
+
+ OUTPUT: 
+  
+ LagInput lagin
 
 - LagIO.writeInput(args, filename): Generate input file from console input
 
-  INPUT: string filename, tuple args # arguments from argparse module
+  INPUT: 
+  
+  string filename, tuple args # arguments from argparse module
 
 - LagIO.readInput(filename): Read input files to generate the LagInput type
 
