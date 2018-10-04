@@ -41,12 +41,12 @@ How To Run
 --------
 
 To run the package go to the src directory Lagevin/src then run the file then do:
-  - $ python Lagevin.py --temperature 300 --total_time 1000 --time_step 0.1 --initial_position 0.0 --initial_velocity 0.0 --damping_coefficient 0.1
+  - /Lagevin/src$ python Lagevin.py --temperature 300 --total_time 1000 --time_step 0.1 --initial_position 0.0 --initial_velocity 0.0 --damping_coefficient 0.1
 where for example --temperature 300 means the input temperature is 300 for the simulation. This applies to all the parameters listed above.
 
 To run coverage, go to the Lagevin directory Lagevin/ then do:
-  - $ coverage run --source=src setup.py test
-  - $ coverage report -m
+  - /Lagevin$ coverage run --source=src setup.py test
+  - /Lagevin$ coverage report -m
   
 Credits
 -------
