@@ -33,8 +33,8 @@ Features
 Package simulate 1D Langevin dynamics for 1 particle with wall bound from 0 to 5. Package includes:
 
 - Lagevin.py: This is the main file 
-  Haii
-- LagIntegrator.py: This defines the time stepping integrator.
+- LagIntegrator.py: This defines the time steping integrator.
+  - LagIntegrator.RK4(RHS, lagin, F) 
 - LagIO.py: This defines function that takes care of reading input and writing outputs
 - LagInput.py: This defines the input structure read from the input file.
 
